@@ -1,0 +1,53 @@
+.page-header
+  %h1 Tagged
+
+-#debug @posts
+
+%ul.pager
+  -unless params[:previous].blank?
+    %li.previous
+      -prev = params[:previous].split(',')
+      =link_to '&larr; Newer'.html_safe, before:prev.pop, previous:prev.join(','), tag:params[:tag]
+  -unless @posts.blank?
+    %li.next
+      =link_to '&rarr; Older'.html_safe, before:Time.parse(@posts.last['date']).to_i, previous:(params[:previous] || '').split(",").concat([params[:before] || Time.now.to_i.to_s]).flatten.join(','), tag:params[:tag]
+.posts
+  -@posts.each do |post|
+    -#=debug(post)
+    .row.posts{style:'margin-bottom:40px;'}
+      .col-sm-3.col-md-3.text-right
+        %p By: #{link_to post['blog_name'], "http://#{post['blog_name']}.tumblr.com"}
+        %p=link_to "Permalink", post['post_url']
+        %p=post['date']
+        %p=time_ago_in_words(post['date'])
+        -#%span.label.label-primary Tagged
+        -#-time = Time.find_zone('Eastern Time (US & Canada)').at(post['scheduled_publish_time'].to_i)
+        -#.timewell
+          .date=time.strftime("%^b %-d")
+          .day=time.strftime("%^a")
+          .hour=time.strftime("%l:%M%P")
+      .col-sm-7
+        =render_tumblr_post post
+      .col-sm-2
+        -if @reblogs.has_key?(post['id'].to_s)
+          %p Already Reblogged by #{@reblogs[post['id'].to_s]}
+        -else
+          =form_for :reblog, url:{action: :reblog} do |f|
+            =f.hidden_field :id, value:post['id']
+            =f.hidden_field :reblog_key, value:post['reblog_key']
+            =f.label :tags, "Reblog With Tags:"
+            =f.text_field :tags, value:post['tags'].join(","), class:'form-control tags'
+            =f.submit 'Reblog', class:'btn btn-primary'
+          -#=link_to 'Reblog', {action: :reblog, id: post['id'], reblog_key: post['reblog_key']}, class:'btn btn-primary'
+:javascript
+  $('.tags').select2({
+    tags:[#{default_tags}]
+  })
+%ul.pager
+  -unless params[:previous].blank?
+    %li.previous
+      -prev = params[:previous].split(',')
+      =link_to '&larr; Newer'.html_safe, before:prev.pop, previous:prev.join(','), tag:params[:tag]
+  -unless @posts.blank?
+    %li.next
+      =link_to '&rarr; Older'.html_safe, before:Time.parse(@posts.last['date']).to_i, previous:(params[:previous] || '').split(",").concat([params[:before] || Time.now.to_i.to_s]).flatten.join(','), tag:params[:tag]

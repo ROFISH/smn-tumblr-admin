@@ -1,0 +1,10 @@
+.post.audio
+  -#=debug post
+  .embed
+    =post['embed'].html_safe
+  =post['caption'].html_safe
+  -#%a.link{href:post['url']}=post['title']
+  -#%h2.title
+  -#=post['description'].html_safe
+  -#%h2.title=post['title']
+  -#=post['body'].html_safe

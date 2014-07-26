@@ -1,0 +1,459 @@
+/*
+There is like a 99.99% change that this is stolen from Tumblr
+*/
+/*
+Bluth's style "reset" interfered with Ace editor since Ace is being
+inserted in the tiny_mce container. The interference manifested itself in broken
+selections inside of Ace. So, I commented it out. Why didn't I just add ':not([class^="ace"])'
+to every selector? I did, but then the rule's specificity became higher than some of the
+other rules, and stuff broke. This is not real solution. We need a new editor.
+*/
+
+/* Reset */
+/* .bluthSkin table, .bluthSkin tbody, .bluthSkin a, .bluthSkin img, .bluthSkin tr, .bluthSkin div, .bluthSkin td, .bluthSkin iframe, .bluthSkin span, .bluthSkin .mceText {
+    border:0;
+    margin:0;
+    padding:0;
+    background:transparent;
+    white-space:nowrap;
+    text-decoration:none;
+    font-weight:normal;
+    cursor:default;
+    color:#000;
+    vertical-align:baseline;
+    width:auto;
+    border-collapse:separate;
+    text-align:left
+}
+.bluthSkin a:hover, .bluthSkin a:link, .bluthSkin a:visited, .bluthSkin a:active {
+    text-decoration: none;
+    font-weight: normal;
+    cursor: default;
+    color: #000;
+}
+.bluthSkin table td { vertical-align:middle } */
+
+/* Containers */
+.bluthSkin table {background: transparent;}
+.bluthSkin iframe {display:block; background:#FFF}
+.bluthSkin .mceToolbar {height:26px}
+.bluthSkin .mceLeft {text-align:left}
+.bluthSkin .mceRight {text-align:right}
+/* External */
+.bluthSkin .mceExternalToolbar {position:absolute; border:1px solid #CCC; border-bottom:0; display:none;}
+.bluthSkin .mceExternalToolbar td.mceToolbar {padding-right:13px;}
+.bluthSkin .mceExternalClose {position:absolute; top:3px; right:3px; width:7px; height:7px; background:url(../../img/icons.gif) -820px 0}
+/* Layout */
+.bluthSkin table.mceLayout {
+    border: 0;
+    position: relative;
+    width: 100% !important;
+}
+.bluthSkin table.mceLayout tr.mceFirst td {border-top:1px solid #dde1e4}
+.bluthSkin table.mceLayout tr.mceLast td {
+    border-bottom: 0;
+    overflow: hidden;
+    height: 2px;
+}
+.bluthSkin table.mceToolbar, .bluthSkin tr.mceFirst .mceToolbar tr td, .bluthSkin tr.mceLast .mceToolbar tr td {border:0; margin:0; padding:0;}
+.bluthSkin td.mceToolbar {
+    background: #fafafa;
+    padding-top: 1px;
+    vertical-align: top;
+}
+.bluthSkin .mceIframeContainer {border-top:1px dashed #d1d8dd; display:block;}
+.bluthSkin .mceStatusbar {font-family:'MS Sans Serif',sans-serif,Verdana,Arial; font-size:9pt; line-height:16px; overflow:visible; color:#000; display:block; height:0px}
+.bluthSkin .mceStatusbar div {float:left; margin:2px}
+.bluthSkin .mceStatusbar a.mceResize {
+    display: block;
+    position: absolute;
+    background: url(../../img/icons.gif) -800px 0 no-repeat;
+    width:20px;
+    height:20px;
+    bottom: 1px;
+    right: 1px;
+    opacity: 0.4;
+}
+.bluthSkin .mceStatusbar a:hover {text-decoration:underline}
+.bluthSkin table.mceToolbar {
+    margin: auto;
+}
+.bluthSkin span.mceIcon, .bluthSkin img.mceIcon {
+    display: block;
+    width: 30px;
+    height: 30px;
+}
+.bluthSkin .mceIcon {
+    background: transparent url(img/tiny_mce_sprite.png?7) 0 0 no-repeat;
+    cursor: pointer !important;
+}
+.bluthSkin td.mceCenter {text-align:center;}
+.bluthSkin td.mceCenter table {margin:0 auto; text-align:left;}
+.bluthSkin td.mceRight table {margin:0 0 0 auto;}
+/* Button */
+.bluthSkin .mceButton {
+    display: block;
+    width: 30px;
+    height: 30px;
+    margin-right: 1px;
+    cursor: pointer !important;
+    opacity: 0.31;
+}
+.bluthSkin .mceButton.mce_code {
+    width: 60px;
+}
+.bluthSkin .mceButton:hover {
+    opacity: 0.41;
+}
+.bluthSkin a.mceButtonActive:hover,
+.bluthSkin a.mceButtonActive {
+    opacity: 1;
+}
+/*.bluthSkin a.mceButtonEnabled:hover {border:1px solid #0A246A; background-color:#B2BBD0}
+.bluthSkin a.mceButtonActive, .bluthSkin a.mceButtonSelected {border:1px solid #0A246A; background-color:#C2CBE0}*/
+.bluthSkin .mceButtonDisabled:hover .mceIcon,
+.bluthSkin .mceButtonDisabled .mceIcon {
+    opacity:0.3;
+    filter:alpha(opacity=30);
+    cursor: default !important;
+}
+.bluthSkin .mceButtonLabeled {width:auto}
+.bluthSkin .mceButtonLabeled span.mceIcon {float:left}
+.bluthSkin span.mceButtonLabel {display:block; font-size:10px; padding:4px 6px 0 22px; font-family:Tahoma,Verdana,Arial,Helvetica}
+.bluthSkin .mceButtonDisabled .mceButtonLabel {color:#888}
+/* Separator */
+.bluthSkin .mceSeparator {display:block; background:url(../../img/icons.gif) -180px 0; width:2px; height:20px; margin:2px 2px 0 4px}
+/* ListBox */
+.bluthSkin .mceListBox {direction:ltr}
+.bluthSkin .mceListBox, .bluthSkin .mceListBox a {display:block}
+.bluthSkin .mceListBox .mceText {padding-left:4px; width:70px; text-align:left; border:1px solid #CCC; border-right:0; background:#FFF; font-family:Tahoma,Verdana,Arial,Helvetica; font-size:11px; height:20px; line-height:20px; overflow:hidden}
+.bluthSkin .mceListBox .mceOpen {width:9px; height:20px; background:url(../../img/icons.gif) -741px 0; margin-right:2px; border:1px solid #CCC;}
+.bluthSkin table.mceListBoxEnabled:hover .mceText, .bluthSkin .mceListBoxHover .mceText, .bluthSkin .mceListBoxSelected .mceText {border:1px solid #A2ABC0; border-right:0; background:#FFF}
+.bluthSkin table.mceListBoxEnabled:hover .mceOpen, .bluthSkin .mceListBoxHover .mceOpen, .bluthSkin .mceListBoxSelected .mceOpen {background-color:#FFF; border:1px solid #A2ABC0}
+.bluthSkin .mceListBoxDisabled a.mceText {color:gray; background-color:transparent;}
+.bluthSkin .mceListBoxMenu {overflow:auto; overflow-x:hidden}
+.bluthSkin .mceOldBoxModel .mceListBox .mceText {height:22px}
+.bluthSkin .mceOldBoxModel .mceListBox .mceOpen {width:11px; height:22px;}
+.bluthSkin select.mceNativeListBox {font-family:'MS Sans Serif',sans-serif,Verdana,Arial; font-size:7pt; background:#eee; border:1px solid gray; margin-right:2px;}
+/* SplitButton */
+.bluthSkin .mceSplitButton {width:32px; height:20px; direction:ltr}
+.bluthSkin .mceSplitButton a, .bluthSkin .mceSplitButton span {height:20px; display:block}
+.bluthSkin .mceSplitButton a.mceAction {
+    width:20px;
+    margin: 0 -5px 0 0;
+    opacity: 0.31;
+}
+.bluthSkin .mceSplitButton a.mceAction:hover {
+    opacity: 0.41;
+}
+.bluthSkin .mceSplitButton span.mce_spellchecker {
+    background: transparent url(img/tiny_mce_sprite.png?7) -365px -5px no-repeat;
+    cursor: pointer !important;
+}
+.bluthSkin .mceSplitButton a.mceOpen {
+    width:9px;
+}
+.bluthSkin .mceSplitButton span.mceOpen {
+    width: 9px;
+    background: transparent url(img/tiny_mce_sprite.png?7) -400px -5px no-repeat;
+    opacity: 0.31;
+}
+.bluthSkin .mceSplitButtonActive a.mceAction span.mce_spellchecker,
+.bluthSkin .mceSplitButtonSelected a.mceAction span.mce_spellchecker {
+    background-position: -365px -35px;
+}
+.bluthSkin .mceSplitButtonDisabled .mceAction, .bluthSkin .mceSplitButtonDisabled span.mceOpen {opacity:0.3; filter:alpha(opacity=30)}
+.bluthSkin .mceSplitButtonActive a.mceOpen {border-left:0;}
+/* ColorSplitButton */
+.bluthSkin div.mceColorSplitMenu table {background:#FFF; border:1px solid gray}
+.bluthSkin .mceColorSplitMenu td {padding:2px}
+.bluthSkin .mceColorSplitMenu a {display:block; width:9px; height:9px; overflow:hidden; border:1px solid #808080}
+.bluthSkin .mceColorSplitMenu td.mceMoreColors {padding:1px 3px 1px 1px}
+.bluthSkin .mceColorSplitMenu a.mceMoreColors {width:100%; height:auto; text-align:center; font-family:Tahoma,Verdana,Arial,Helvetica; font-size:11px; line-height:20px; border:1px solid #FFF}
+.bluthSkin .mceColorSplitMenu a.mceMoreColors:hover {border:1px solid #0A246A; background-color:#B6BDD2}
+.bluthSkin a.mceMoreColors:hover {border:1px solid #0A246A}
+.bluthSkin .mceColorPreview {margin-left:2px; width:16px; height:4px; overflow:hidden; background:#9a9b9a}
+.bluthSkin .mce_forecolor span.mceAction, .bluthSkin .mce_backcolor span.mceAction {overflow:hidden; height:16px}
+/* Popovers */
+.bluthSkin .popover {
+    background-color: #f4f4f4;
+    cursor: default;
+    position:absolute;
+    z-index: 2147483647;
+    -webkit-border-radius: 6px;
+       -moz-border-radius: 6px;
+            border-radius: 6px;
+    -webkit-box-shadow: 0 4px 9px rgba(0,0,0,0.35);
+       -moz-box-shadow: 0 4px 9px rgba(0,0,0,0.35);
+            box-shadow: 0 4px 9px rgba(0,0,0,0.35);
+}
+.bluthSkin .popover_gradient {
+    background-color: transparent;
+    background-image:    -moz-linear-gradient(rgba(0, 0, 0, 0.26), rgba(0, 0, 0, 0.45));
+    background-image:     -ms-linear-gradient(rgba(0, 0, 0, 0.26), rgba(0, 0, 0, 0.45));
+    background-image:      -o-linear-gradient(rgba(0, 0, 0, 0.26), rgba(0, 0, 0, 0.45));
+    background-image: -webkit-linear-gradient(rgba(0, 0, 0, 0.26), rgba(0, 0, 0, 0.45));
+    background-image:         linear-gradient(rgba(0, 0, 0, 0.26), rgba(0, 0, 0, 0.45));
+    padding: 1px;
+}
+.bluthSkin .popover_gradient > .popover_inner {
+    background: #fff;
+    padding: 10px;
+    -webkit-border-radius: 6px;
+       -moz-border-radius: 6px;
+            border-radius: 6px;
+    -webkit-box-shadow: inset 0 1px 0 rgba(255,255,255,.75);
+       -moz-box-shadow: inset 0 1px 0 rgba(255,255,255,.75);
+            box-shadow: inset 0 1px 0 rgba(255,255,255,.75);
+}
+.bluthSkin .popover_gradient:after,
+.bluthSkin .popover_menu .popover_menu_item:first-child:after {
+    content: "";
+    position: absolute;
+    border-bottom: 13px solid #f3f3f3;
+    border-left: 13px solid transparent;
+    border-right: 13px solid transparent;
+    font-size: 0;
+    height: 0;
+    margin: 0 auto;
+    top: -11px;
+    margin-left:-7px;
+    width: 0;
+    left:50%;
+}
+.bluthSkin .popover_gradient:before,
+.bluthSkin .popover_menu .popover_menu_item:first-child:before {
+    content: "";
+    position: absolute;
+    border-bottom: 13px solid rgba(0,0,0,0.38);
+    border-left: 13px solid transparent;
+    border-right: 13px solid transparent;
+    font-size: 0;
+    height: 0;
+    margin: 0 auto;
+    top: -12px;
+    margin-left:-7px;
+    width: 0;
+    left:50%;
+}
+.bluthSkin .popover_post_tools:before {right:56px;}
+.bluthSkin .popover_post_tools:after {right:57px;}
+.bluthSkin .popover_post_tools textarea {
+    width: 100%;
+    height: 110px;
+    display:block;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing:border-box;
+    box-sizing:border-box;
+    margin-bottom:10px;
+    resize: none;
+    font-family: "Helvetica Neue", Arial, Helvetica, sans-serif;
+    font-size:13px;
+    padding:9px;
+    border:1px solid #BFBFBF;
+    -webkit-border-radius:2px;
+       -moz-border-radius:2px;
+        -ms-border-radius:2px;
+         -o-border-radius:2px;
+            border-radius:2px;
+    -webkit-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.11) inset, 0 1px 1px white;
+       -moz-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.11) inset, 0 1px 1px white;
+        -ms-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.11) inset, 0 1px 1px white;
+         -o-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.11) inset, 0 1px 1px white;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.11) inset, 0 1px 1px white;
+}
+/* Menu */
+.bluthSkin .mceMenu {
+    position: absolute;
+    left: 0;
+    top: 0;
+    z-index: 1000;
+    border: 1px solid #D4D0C8;
+}
+.bluthSkin .mceNoIcons span.mceIcon {width:0;}
+.bluthSkin .mceNoIcons a .mceText {padding-left:10px}
+.bluthSkin .mceMenu table {background:#FFF}
+.bluthSkin .mceMenu a, .bluthSkin .mceMenu span, .bluthSkin .mceMenu {display:block}
+.bluthSkin .mceMenu td {height:20px}
+.bluthSkin .mceMenu a {position:relative;padding:3px 0 4px 0}
+.bluthSkin .mceMenuItem {
+    background: transparent none;
+}
+.bluthSkin .mceMenuItem .mceIcon {
+    background: transparent none;
+    height: 20px;
+}
+.bluthSkin .mceMenu .mceText {
+    position: relative;
+    display: block;
+    color: #444;
+    cursor: pointer;
+    margin: 0;
+    padding: 0 25px;
+}
+.bluthSkin .mceMenu span.mceText, .bluthSkin .mceMenu .mcePreview {font-size:11px}
+.bluthSkin .mceMenu pre.mceText {font-family:Monospace}
+.bluthSkin .mceMenu .mceIcon {position:absolute; top:0; left:0; width:22px;}
+.bluthSkin .mceMenu .mceMenuItemEnabled a:hover,
+.bluthSkin .mceMenu .mceMenuItemActive {
+    background-color: #fafafa;
+}
+.bluthSkin td.mceMenuItemSeparator {background:#ddd; height:1px}
+.bluthSkin .mceMenuItemTitle a {
+    border:0;
+    background:#fafafa;
+    border-bottom:1px solid #DDD
+}
+.bluthSkin .mceMenuItemTitle span.mceText {color:#000; font-weight:bold; padding-left:4px}
+.bluthSkin .mceMenuItemDisabled .mceText {color:#888}
+.bluthSkin .mceMenuItem.mceMenuItemSelected span.mceIcon {
+    background:url(img/menu_check.gif)
+}
+.bluthSkin .mceNoIcons .mceMenuItemSelected a {background:url(img/menu_arrow.gif) no-repeat -6px center}
+.bluthSkin .mceMenu span.mceMenuLine {display:none}
+.bluthSkin .mceMenuItemSub a {background:url(img/menu_arrow.gif) no-repeat top right;}
+/* Progress,Resize */
+.bluthSkin .mceBlocker {position:absolute; left:0; top:0; z-index:1000; opacity:0.5; filter:alpha(opacity=50); background:#FFF}
+.bluthSkin .mceProgress {position:absolute; left:0; top:0; z-index:1001; background:url(img/progress.gif) no-repeat; width:32px; height:32px; margin:-16px 0 0 -16px}
+.bluthSkin .mcePlaceHolder {border:1px dotted gray}
+/* Formats */
+.bluthSkin .mce_formatPreview a {font-size:10px}
+.bluthSkin .mce_p span.mceText {}
+.bluthSkin .mce_address span.mceText {font-style:italic}
+.bluthSkin .mce_pre span.mceText {font-family:monospace}
+.bluthSkin .mce_h1 span.mceText {font-weight:bolder; font-size: 2em}
+.bluthSkin .mce_h2 span.mceText {font-weight:bolder; font-size: 1.5em}
+.bluthSkin .mce_h3 span.mceText {font-weight:bolder; font-size: 1.17em}
+.bluthSkin .mce_h4 span.mceText {font-weight:bolder; font-size: 1em}
+.bluthSkin .mce_h5 span.mceText {font-weight:bolder; font-size: .83em}
+.bluthSkin .mce_h6 span.mceText {font-weight:bolder; font-size: .75em}
+/* Theme */
+.bluthSkin span.mce_bold {
+    background-position: 0 0;
+}
+.bluthSkin .mceButtonActive span.mce_bold {
+    background-position: 0 -30px;
+}
+.bluthSkin span.mce_italic {
+    background-position: -30px 0;
+}
+.bluthSkin .mceButtonActive span.mce_italic {
+    background-position: -30px -30px;
+}
+.bluthSkin span.mce_strikethrough {
+    background-position: -60px 0;
+}
+.bluthSkin .mceButtonActive span.mce_strikethrough {
+    background-position: -60px -30px;
+}
+.bluthSkin span.mce_link {
+    background-position: -90px 0;
+}
+.bluthSkin .mceButtonActive span.mce_link {
+    background-position: -90px -30px;
+}
+.bluthSkin span.mce_unlink {
+    background-position: -120px 0;
+}
+.bluthSkin .mceButtonActive span.mce_unlink {
+    background-position: -120px -30px;
+}
+.bluthSkin span.mce_numlist {
+    background-position: -150px 0;
+}
+.bluthSkin .mceButtonActive span.mce_numlist {
+    background-position: -150px -30px;
+}
+.bluthSkin span.mce_bullist {
+    background-position: -180px 0;
+}
+.bluthSkin .mceButtonActive span.mce_bullist {
+    background-position: -180px -30px;
+}
+.bluthSkin span.mce_pagebreak {
+    background-position: -210px 0;
+}
+.bluthSkin .mceButtonActive span.mce_pagebreak {
+    background-position: -210px -30px;
+}
+.bluthSkin span.mce_blockquote {
+    background-position: -240px 0;
+}
+.bluthSkin .mceButtonActive span.mce_blockquote {
+    background-position: -240px -30px;
+}
+.bluthSkin span.mce_image_upload {
+    background-position: -270px 0;
+}
+.bluthSkin .mceButtonActive span.mce_image_upload {
+    background-position: -270px -30px;
+}
+.bluthSkin span.mce_image {
+    background-position: -419px 0;
+}
+.bluthSkin .mceButtonActive span.mce_image {
+    background-position: -419px -30px;
+}
+.bluthSkin span.mce_code {
+    background-position: -300px 0;
+    width: 60px;
+}
+/* Plugins */
+.bluthSkin span.mce_advhr {background-position:-0px -20px}
+.bluthSkin span.mce_ltr {background-position:-20px -20px}
+.bluthSkin span.mce_rtl {background-position:-40px -20px}
+.bluthSkin span.mce_emotions {background-position:-60px -20px}
+.bluthSkin span.mce_fullpage {background-position:-80px -20px}
+.bluthSkin span.mce_fullscreen {background-position:-100px -20px}
+.bluthSkin span.mce_iespell {background-position:-120px -20px}
+.bluthSkin span.mce_insertdate {background-position:-140px -20px}
+.bluthSkin span.mce_inserttime {background-position:-160px -20px}
+.bluthSkin span.mce_absolute {background-position:-180px -20px}
+.bluthSkin span.mce_backward {background-position:-200px -20px}
+.bluthSkin span.mce_forward {background-position:-220px -20px}
+.bluthSkin span.mce_insert_layer {background-position:-240px -20px}
+.bluthSkin span.mce_insertlayer {background-position:-260px -20px}
+.bluthSkin span.mce_movebackward {background-position:-280px -20px}
+.bluthSkin span.mce_moveforward {background-position:-300px -20px}
+.bluthSkin span.mce_media {background-position:-320px -20px}
+.bluthSkin span.mce_nonbreaking {background-position:-340px -20px}
+.bluthSkin span.mce_pastetext {background-position:-360px -20px}
+.bluthSkin span.mce_pasteword {background-position:-380px -20px}
+.bluthSkin span.mce_selectall {background-position:-400px -20px}
+.bluthSkin span.mce_preview {background-position:-420px -20px}
+.bluthSkin span.mce_print {background-position:-440px -20px}
+.bluthSkin span.mce_cancel {background-position:-460px -20px}
+.bluthSkin span.mce_save {background-position:-480px -20px}
+.bluthSkin span.mce_replace {background-position:-500px -20px}
+.bluthSkin span.mce_search {background-position:-520px -20px}
+.bluthSkin span.mce_styleprops {background-position:-560px -20px}
+.bluthSkin span.mce_table {background-position:-580px -20px}
+.bluthSkin span.mce_cell_props {background-position:-600px -20px}
+.bluthSkin span.mce_delete_table {background-position:-620px -20px}
+.bluthSkin span.mce_delete_col {background-position:-640px -20px}
+.bluthSkin span.mce_delete_row {background-position:-660px -20px}
+.bluthSkin span.mce_col_after {background-position:-680px -20px}
+.bluthSkin span.mce_col_before {background-position:-700px -20px}
+.bluthSkin span.mce_row_after {background-position:-720px -20px}
+.bluthSkin span.mce_row_before {background-position:-740px -20px}
+.bluthSkin span.mce_merge_cells {background-position:-760px -20px}
+.bluthSkin span.mce_table_props {background-position:-980px -20px}
+.bluthSkin span.mce_row_props {background-position:-780px -20px}
+.bluthSkin span.mce_split_cells {background-position:-800px -20px}
+.bluthSkin span.mce_template {background-position:-820px -20px}
+.bluthSkin span.mce_visualchars {background-position:-840px -20px}
+.bluthSkin span.mce_abbr {background-position:-860px -20px}
+.bluthSkin span.mce_acronym {background-position:-880px -20px}
+.bluthSkin span.mce_attribs {background-position:-900px -20px}
+.bluthSkin span.mce_cite {background-position:-920px -20px}
+.bluthSkin span.mce_del {background-position:-940px -20px}
+.bluthSkin span.mce_ins {background-position:-960px -20px}
+@media only screen and (-webkit-min-device-pixel-ratio: 2 ), only screen and ( -moz-min-device-pixel-ratio: 2), only screen and ( -o-min-device-pixel-ratio: 2/1 ), only screen and ( min-device-pixel-ratio: 2 ), only screen and ( min-resolution: 192dpi ), only screen and ( min-resolution: 2dppx ) {
+    .bluthSkin .mceSplitButton span.mce_spellchecker,
+    .bluthSkin .mceSplitButton span.mceOpen,
+    .bluthSkin .mceIcon,
+    .bluthSkin .mceSplitButton span.mce_spellchecker {
+        background-image: url(img/tiny_mce_sprite_2x.png?7);
+        background-size: 450px 60px; /* 1x dimensions */
+    }
+}

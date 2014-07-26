@@ -1,0 +1,9 @@
+.post.video
+  .embed
+    =post['player'].detect{|x| x['width'] ==500}.try(:[],'embed_code').try(:html_safe)
+  =post['caption'].html_safe
+  -#%a.link{href:post['url']}=post['title']
+  -#%h2.title
+  -#=post['description'].html_safe
+  -#%h2.title=post['title']
+  -#=post['body'].html_safe

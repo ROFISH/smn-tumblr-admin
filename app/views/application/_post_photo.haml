@@ -1,0 +1,7 @@
+.post.photo
+  -post['photos'].each do |photo|
+    -photothing = photo['alt_sizes'].detect{|x| x['width']==500} || photo['original_size']
+    %img.photo{src:photothing['url']}
+  =post['caption'].html_safe
+  -#%h2.title=post['title']
+  -#=post['body'].html_safe

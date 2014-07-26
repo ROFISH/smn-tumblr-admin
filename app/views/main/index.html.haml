@@ -1,0 +1,11 @@
+.page-header
+  %h1 Options
+
+%p=link_to 'View Queued', action: :queued
+%p=link_to 'View Submission', action: :submissions
+%p=link_to 'View Tag #starmen.net', action: :tagged, tag:'starmen.net'
+%p=link_to 'View Tag #earthbound', action: :tagged, tag:'earthbound'
+%p=link_to 'View Tag #mother3', action: :tagged, tag:'mother3'
+=form_tag({:action=>:tagged},{method: :get}) do
+  =label_tag :tag, 'Search Any Tag:'
+  =text_field_tag :tag, '', class:'form-control'
