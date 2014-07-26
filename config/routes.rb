@@ -70,6 +70,7 @@ Rails.application.routes.draw do
 
   get 'edit/:state/:id' => 'main#edit'
   post 'update/:state/:id' => 'main#update'
+  delete 'destroy/:state/:id' => 'main#destroy'
 
   get 'requeue/:id' => 'main#requeue'
   get 'add_to_queue/:id' => 'main#add_to_queue'

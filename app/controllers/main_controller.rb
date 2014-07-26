@@ -75,6 +75,25 @@ class MainController < ApplicationController
     redirect_back
   end
 
+  def destroy
+    if params[:state] == 'queued'
+      @post = @client.posts('starmendotnet.tumblr.com',id:params[:id]).try(:[],'posts').try(:first)
+    elsif params[:state] == 'submission'
+      @post = @client.posts('starmendotnet.tumblr.com',id:params[:id]).try(:[],'posts').try(:first)
+    else
+      render text:'unknown', status:422
+      return
+    end
+
+    if @post['state'] != 'queued'
+      render text:'can only delete from queue', status:422
+    else
+      @client.delete('starmendotnet.tumblr.com',params[:id])
+      Reblog.where(tumblr_id:params[:id]).delete_all
+      redirect_back
+    end
+  end
+
   def tagged
     @posts = @client.tagged(params[:tag],before:params[:before])
     ids = @posts.map{|x| x['id'].to_s}
