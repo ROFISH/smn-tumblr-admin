@@ -1,24 +1,5 @@
 class MainController < ApplicationController
 
-  def test_crap
-    #p @client.submissions("starmendotnet.tumblr.com")['posts'][0]['id']
-    #render text:@client.submissions("starmendotnet.tumblr.com").to_yaml, content_type: :text
-    #return
-    #post = @client.submissions("starmendotnet.tumblr.com")['posts'][0]
-    #id = post['id']
-    #reblog_key = post['reblog_key']
-    #@client.edit('starmendotnet.tumblr.com',{id: id, state:'published'})
-
-    #render text:"lol #{id}"
-    #render text:@client.edit('starmendotnet.tumblr.com',{id: id, state:'published',post_author:'rofishstestacount'}).to_yaml, content_type: :text
-    #text = ''
-    #text += @client.posts('starmendotnet.tumblr.com').to_yaml
-    #text += @client.edit('starmendotnet.tumblr.com',{id: id, state:'published'}).to_yaml
-    #text += @client.reblog('starmendotnet.tumblr.com',{id: id, reblog_key: reblog_key}).to_yaml
-    #text += @client.delete('starmendotnet.tumblr.com',id).to_yaml
-    #render text:text, content_type: :text
-  end
-
   def queued
     @posts = @client.queue('starmendotnet.tumblr.com')['posts']
   end
@@ -115,7 +96,6 @@ class MainController < ApplicationController
     Reblog.create(tumblr_id:params[:id],reblogged_by:session[:username])
 
     redirect_to :root
-    #render text:@client.reblog('starmendotnet.tumblr.com',id:params[:id],reblog_key:params[:reblog_key], state:'queue').to_yaml, content_type: :text
   end
 
   def redirect_back
@@ -127,22 +107,6 @@ class MainController < ApplicationController
       redirect_to action: :index
     end
   end
-
-  # def tumblr_callback
-  #   if !request.env["omniauth.auth"]['info']['blogs'].detect{|x| x['name']=='starmendotnet'}
-  #     render text:'<h1>You do not have access to edit blog starmendotnet</h1>', status: :unauthorized
-  #     return
-  #   end
-
-  #   #render text:request.env["omniauth.auth"].to_yaml, content_type: :text
-  #   session[:oauth_token] = request.env["omniauth.auth"]['credentials']['token']
-  #   session[:oauth_secret] = request.env["omniauth.auth"]['credentials']['secret']
-  #   session[:last_login] = Time.now
-
-  #   render text:request.env["omniauth.auth"]['credentials'].to_yaml, content_type: :text
-
-  #   #redirect_to action: :index
-  # end
 
   API_KEY = "smn-tumblr-admin.herokuapp.com"
   API_SECRET = ENV['SMN_TUMBLR_FG_SECRET']
