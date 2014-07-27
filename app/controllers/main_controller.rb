@@ -112,7 +112,7 @@ class MainController < ApplicationController
     reblog = @client.reblog('starmendotnet.tumblr.com',id:reblog_params[:id],reblog_key:reblog_params[:reblog_key], tags:tags, state:'queue')
 
     # create a log
-    Reblog.create(tumblr_id:params[:id],reblogged_by:session[:username])
+    Reblog.create(tumblr_id:reblog_params[:id],reblogged_by:session[:username])
 
     redirect_to :root
   end
