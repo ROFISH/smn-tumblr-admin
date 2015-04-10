@@ -1,7 +1,14 @@
 class MainController < ApplicationController
 
   def queued
-    @posts = @client.queue('starmendotnet.tumblr.com')['posts']
+    @offset = params[:offset].try(:to_i) || 0
+    @offset = 0 if @offset < 0
+    @posts = @client.queue('starmendotnet.tumblr.com',offset:@offset)['posts']
+    if @posts.length == 20
+      # check with tumblr if we have a next page if we reached the max limit of 20 post per call
+      nextpost = @client.queue('starmendotnet.tumblr.com',offset:@offset+20,limit:1)['posts']
+      @has_next_page = true if nextpost.length == 1
+    end
   end
 
   def submissions
